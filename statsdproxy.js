@@ -28,7 +28,7 @@ StatsDProxy.prototype.start = function() {
 StatsDProxy.prototype.processRequest = function(request, response) {
     if (request.method == "GET") {
         var params = url.parse(request.url, true);
-        if (params.key) {
+        if (params.query.key) {
             statsdClient.increment(params.key, 1);
             response.writeHead(200);
             response.end();
