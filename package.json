@@ -2,7 +2,7 @@
   "name": "StatsD Proxy",
   "version": "0.0.1",
   "description": "Proxy for incrementing keys in StatsD via GET requests",
-  "main": "index.js",
+  "main": "statsdproxy.js",
   "dependencies": {
     "node-statsd": "*"
   },
