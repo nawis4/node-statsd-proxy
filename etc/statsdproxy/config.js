@@ -5,3 +5,5 @@ var config = {
         "prefix": "topface.Topface.Sockmess.server"
     }
 };
+
+module.exports = config;

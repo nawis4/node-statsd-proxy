@@ -16,7 +16,7 @@ var Config = {};
  * @return object Конфиг
  */
 Config.readConfig = function(instanceName) {
-    var configPath = Config._getConfigPath(instanceName);
+    var configPath = Config._getConfigPath();
     if (!configPath) {
         util.error("ERROR: config file config.js' must exist either in ~/.statsdproxy or /etc/statsdproxy.");
         util.error("An example config file can be found in scripts/etc/statsdproxy/config.js in the StatsDProxy directory.");
@@ -25,7 +25,6 @@ Config.readConfig = function(instanceName) {
 
     try {
         var config = require(configPath);
-        config.instanceName = instanceName;
         return config;
     } catch (error) {
         util.error("ERROR: could not load config file '" + configPath +"' because:\n" + error.stack);
@@ -36,10 +35,9 @@ Config.readConfig = function(instanceName) {
 /**
  * Определяет путь к файлу конфига, проверяя по очереди существование юзерского
  * и глобального конфига
- * @param string instanceName Название инстанса
  * @return string|boolean Путь к конфигу, или false, если никакой конфиг не найден
  */
-Config._getConfigPath = function(instanceName) {
+Config._getConfigPath = function() {
     if (process.env.HOME) {
         var userConfigPath = process.env.HOME + '/.statsdproxy/config.js';
         if (fs.existsSync(userConfigPath)) {

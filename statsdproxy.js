@@ -7,7 +7,7 @@ var http = require("http"),
 function StatsDProxy(config) {
     var t = this;
 
-    if (!config || (config && !config.statd)) {
+    if (!config || (config && !config.statsd)) {
         console.log("No config");
         process.exit(1);
     }
@@ -19,12 +19,10 @@ function StatsDProxy(config) {
     });
 
     t.server = http.createServer(t.processRequest);
-    t.serverS = https.createServer(t.processRequest);
 }
 
 StatsDProxy.prototype.start = function() {
     this.server.listen(80);
-    this.serverS.listen(443);
 };
 
 StatsDProxy.prototype.processRequest = function(request, response) {
