@@ -4,9 +4,6 @@ Proxy for incrementing graphite stats with GET requests
 
 ## Installation
 
-```
-npm install node-statsd-proxy
-```
 
 ## Config
 
